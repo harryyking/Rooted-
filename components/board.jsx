@@ -7,7 +7,7 @@ const Board = () => {
 
         const { data, error, isLoading } = useQuery({
           queryKey : ['Leaderboard'],
-          queryFn: () => fetch('api/getLeaderboard').then((response) =>
+          queryFn: () => fetch('/api/getLeaderboard').then((response) =>
           response.json(),
           
         )},
