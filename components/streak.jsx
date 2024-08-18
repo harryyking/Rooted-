@@ -10,7 +10,7 @@ const streak = () => {
 
   const {data: streak, isLoading, error} = useQuery({
     queryKey: ['streak'],
-    queryFn: () => fetch(`/api/streak/getStreak?email=${session.user.email}`).then((response)=> response.json()),
+    queryFn: () => fetch('/api/streak/getStreak').then((response)=> response.json()),
     enabled: !!session?.user?.email
   }
   )
