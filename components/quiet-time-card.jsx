@@ -7,6 +7,7 @@ import { useSession } from 'next-auth/react';
 
 const Card = () => {
   const{data: session} = useSession();
+ 
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const [submit, setSubmit] = useState(false);
   const {addToast} = useToast();
@@ -17,11 +18,11 @@ const Card = () => {
   const onSubmit = async (data) => {
     setSubmit(true);
     try {
-      const response = await fetch("/api/postRecord", {
+      const response = await fetch(`/api/postRecord?email=${session?.user.email}`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
-          // 'Authorization' : `Bearer ${session.user.email}`,
+          'Email' : `${session.user.email}`,
         },
         body: JSON.stringify(data),
       });

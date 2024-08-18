@@ -9,6 +9,7 @@ const Board = () => {
           queryKey : ['Leaderboard'],
           queryFn: () => fetch('api/getLeaderboard').then((response) =>
           response.json(),
+          
         )},
         );
  

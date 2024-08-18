@@ -5,7 +5,7 @@ export const GET = async(request) => {
     try {
         await connectToDB();
 
-        const user = await User.find({}).sort({streak: -1}).limit(10);
+        const user = await User.find({}).sort({streak: -1}).limit(100);
 
         return new Response(JSON.stringify(user), {status: 200})
     } catch (error) {

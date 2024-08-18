@@ -9,8 +9,15 @@ const handler = NextAuth({
             clientId: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
 
-        })
+        }),
+       
     ], 
+    session : {
+        strategy: 'jwt', // Use JWT for session tokens
+        maxAge: 24 * 60 * 60, // Set session max age to 24 hours
+        updateAge: 1 * 60 * 60, // update session every 1 hour
+
+    },
     callbacks : {
         async session({session}){
             const sessionUser = await User.findOne({email: session.user.email});
@@ -30,11 +37,10 @@ const handler = NextAuth({
                         email: profile.email,
                         image: profile.picture,
                         streak: 1,
-                        lastActivityDate: null,
+                        lastActivityDate: new Date(),
                     });
                   
                 }
-                this.redirect({ url :"/record", baseUrl: "/"});
                 return true;
             } catch (error) {
                 console.log("Error checking if user exists", error.message);

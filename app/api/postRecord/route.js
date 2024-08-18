@@ -1,12 +1,22 @@
 import { connectToDB } from "@utils/database";
 import Quiet from "@models/Quiet-Time";
 import User from "@models/User";
-
+import { getServerSession } from "next-auth";
 
 // Handles POST request to create a new quiet time and update streak
 export const POST = async (request) => {
 
   try {
+    
+    const session = await getServerSession({req: request})
+
+    if(!session){
+      return new Response("Unauthorized", {status: 401})
+    }
+    
+    const userEmail = session.user.email
+    console.log(userEmail);
+
     const { verse, lesson, prayer } = await request.json();
 
     // Validate form inputs
@@ -16,7 +26,8 @@ export const POST = async (request) => {
   
     await connectToDB();
 
-    
+  
+   
    
     // Streak calculation logic
     const today = new Date();
@@ -25,7 +36,8 @@ export const POST = async (request) => {
 
 
      // Find the user by email
-     let user= await User.findOne({ email : {$exists: true }});
+     let user = await User.findOne({ email : userEmail});
+
 
      if(!user){
          return new Response("Users not found", {status: 404});
@@ -54,7 +66,7 @@ export const POST = async (request) => {
       await user.save();
       
       // Create a new quiet time entry
-    const newQuiet = new Quiet({ verse, lesson, prayer });
+    const newQuiet = new Quiet({ verse, lesson, prayer, creator: user._id, });
     await newQuiet.save();
     console.log("streak has been set");
     return new Response(JSON.stringify({ newQuiet, user}), { status: 201 });

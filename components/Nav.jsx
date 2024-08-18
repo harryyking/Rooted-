@@ -1,26 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import {useState, useEffect} from 'react';
-import {signIn, signOut, useSession, getProviders} from 'next-auth/react';
+import { useSession } from "next-auth/react";
 import { Flower } from "lucide-react";
 
 const Nav = () => {
   const {data: session} = useSession();
-  const [providers, setProviders] = useState(null);
-
-  useEffect(() => {
-    (async () => {
-      const res = await getProviders();
-      setProviders(res);
-    })();
-  },[]);
-  
-
-  useEffect(() => {
-    console.log('Session:', session); // Debugging: Log session data
-  }, [session]);
 
   return (
           <nav className="sticky top-0 z-40 navbar bg-base-100 p-2 px-2">
@@ -66,18 +51,9 @@ const Nav = () => {
               
                
           ): (
-            <>
-            {
-              providers && Object.values(providers).map((provider) => (
-                <button
-                key={provider.name} 
-                onClick={() => signIn(provider.id)}
-                className="btn btn-primary">
-                Sign In
-                </button>
-              ))
-            }
-            </>
+            <Link href="/register">
+            <button className="btn btn-primary">Sign In</button>
+            </Link>
           )
         }
           

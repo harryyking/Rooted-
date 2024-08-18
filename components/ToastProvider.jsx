@@ -21,12 +21,12 @@ const ToastProvider = ({children}) => {
   return (
     <ToastContext.Provider value={{addToast, removeToast}}>
       {children}
-      <div className="toast toast-bottom md:toast-end ">
+      <div className="toast toast-center ">
         {toasts.map((toast) => (
           <div
           key={toast.id}
           className="alert alert-success transition"
-          onAnimationEnd={() =>{ removeToast(toast.id); setTimeout(true, 3000)}}
+          onAnimationEnd={() =>{ removeToast(toast.id); setTimeout(true, 5000)}}
           >
             <span>{toast.message}</span>
           </div>

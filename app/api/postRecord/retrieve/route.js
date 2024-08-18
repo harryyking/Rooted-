@@ -6,8 +6,10 @@ import Quiet from "@models/Quiet-Time";
 export const GET = async (request) => {
     try{
         await connectToDB()
+       
+        
 
-        const quietTime = await Quiet.find({}).populate('creator')
+        const quietTime = await Quiet.find({}).populate('creator').sort({lastActivityDate: -1})
 
         return new Response(JSON.stringify(quietTime), {status: 200});
     }catch (error){

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Peep from '@public/photo4.jpg'
 import Study from '@public/photo3.jpg'
 import { signIn } from 'next-auth/react'
+import Bio from '@public/bio.jpg'
 
 const Home = () => {
   return (
@@ -24,9 +25,11 @@ const Home = () => {
           Keep record of all your quiet times while connecting and sharing your streaks
           with friends. <br /> Highest streaks for the month wins amazing prizes
         </p>
-      
-        <button className="btn btn-primary" onClick={() => signIn()}>
+        <Link href="/register">
+        <button className="btn btn-primary">
         Get Started</button>
+        </Link>
+      
         
       </div>
      
@@ -68,12 +71,38 @@ const Home = () => {
     
             <h1 className='text-5xl font-bold'>Let Get Consistent, Shall we? </h1>
             <p className='py-6'>Sign up now and start streaking your quiet time </p>
-            <button className="btn btn-primary" onClick={()=> signIn()}>Sign Up Now</button>
+            <Link href="/register">
+            <button className="btn btn-primary">Sign Up Now</button>
+            </Link>
+           
         </div>
       </div>
     </section>
 
   </div>
+
+   
+    <section className='bg-base-200 p-4 w-96 min-h-80 mx-auto mt-24 rounded-lg space-y-4 '>
+    <Image
+    src={Bio}
+    alt=""
+    width={100}
+    height={100}
+    className='mx-auto mt-4 rounded-lg shadow-lg shadow-primary'
+    />
+    <h3 className='text-center font-medium text-lg'>Hey, it's Harry👋</h3>
+    <p className='text-center'>I built <span className='font-medium'>Rooted</span> to help 
+      my friends and I to simply check on our Quiet times. Quiet Times are the very basic things 
+      Christians do to show love to their Creator by getting to know more of him everyday.
+      <br /> <span className='font-medium'>Rooted</span> is meant for people struggling with quiet
+      times and it seeks a gamified way to encourage users to do their Quiet times. Keep streaking for amazing prizes <br />
+      <span className='font-medium'>Rooted's</span> long term plan is to support young people around the world to receive Jesus and to hear about His teachings.
+      Support <span className='font-medium'>Rooted</span> by clicking on this link. <Link href='/donate' className='link link-accent'> Donate </Link>
+    </p>
+
+
+  </section>
+  
   {/* FAQs */}
   <section className="flex flex-col justify-center items-center min-h-screen md:px-8">
     <div className="text-center space-y-2 p-8">
@@ -120,7 +149,10 @@ const Home = () => {
       </div>
     
       <div className="flex flex-row mx-auto space-x-4 justify-center">
-      <button className="btn btn-primary w-96" onClick={()=>signIn()}>Get Started Now</button>
+        <Link href="/register">
+        <button className="btn btn-primary w-96">Get Started Now</button>
+        </Link>
+      
       
       </div>
       
