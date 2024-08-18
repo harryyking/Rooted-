@@ -2,6 +2,8 @@ import User from "@models/User";
 import { connectToDB } from "@utils/database";
 import { getServerSession } from "next-auth";
 
+export const dynamic = 'force-dynamic';
+
 export const GET = async(request) => {
 
     try {

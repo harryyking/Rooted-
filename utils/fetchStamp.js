@@ -1,7 +1,7 @@
 
 
 export const fetchStamp = async () => {
-    const response = await fetch('/api/postRecord/retrieve/');
+    const response = await fetch('/api/postRecord/retrieve');
     if(!response.ok){
         throw new Error('Failed to Fetch Products');
     }
