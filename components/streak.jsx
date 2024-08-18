@@ -1,3 +1,4 @@
+"use client";
 import Link from 'next/link'
 import { ChartNoAxesColumnIncreasing } from 'lucide-react'
 import { Layers3 } from 'lucide-react'
