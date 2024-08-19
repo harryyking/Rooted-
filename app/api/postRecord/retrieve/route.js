@@ -2,6 +2,7 @@ import { connectToDB } from "@utils/database";
 import Quiet from "@models/Quiet-Time";
 import { getServerSession } from "next-auth";
 
+export const dynamic = 'force-dynamic';
 // API to fetch all quiet time posts 
 export const GET = async (request) => {
     try{
