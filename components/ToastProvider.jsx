@@ -25,7 +25,7 @@ const ToastProvider = ({children}) => {
         {toasts.map((toast) => (
           <div
           key={toast.id}
-          className="alert alert-success transition"
+          className="alert alert-success transition duration-500 ease-in-out"
           onAnimationEnd={() =>{ removeToast(toast.id); setTimeout(true, 5000)}}
           >
             <span>{toast.message}</span>

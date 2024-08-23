@@ -3,7 +3,7 @@ import Streak from '@components/streak'
 import Card from '@components/quiet-time-card'
 import { useState, useEffect } from 'react'
 import { useSession } from 'next-auth/react'
-
+import Link from 'next/link'
 
 const record = () => {
   const {data: session} = useSession();
@@ -26,6 +26,8 @@ const record = () => {
       
 
       <Card/>
+
+     
       
     </div>
 

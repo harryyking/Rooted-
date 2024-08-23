@@ -29,6 +29,7 @@ const Nav = () => {
         tabIndex={0}
         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow lg:hidden">
           <li><Link href="/donate">Donate</Link></li>
+          <li><Link href="/testify">Testimonies</Link></li>
         <li><Link href="/leaderboard">Leaderboard</Link></li>
         <li><a onClick={()=>signOut()}>Sign Out</a></li>
       </ul>
@@ -47,6 +48,9 @@ const Nav = () => {
                <Link href="/record">
                <button className="btn btn-primary">Quiet Time</button>
                </Link>
+               <Link href="/record/testimony">
+                <button className='btn btn-secondary'>Testimony</button>
+                </Link>
                </div>
               
                

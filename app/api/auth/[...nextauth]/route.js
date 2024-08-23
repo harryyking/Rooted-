@@ -18,6 +18,18 @@ const handler = NextAuth({
         updateAge: 1 * 60 * 60, // update session every 1 hour
 
     },
+    // cookies : {
+    //     sessionToken: {
+    //         name: `__Secure-next-auth.session-token`,
+    //         options: {
+    //             httpOnly: true,
+    //             sameSite: "strict",
+    //             path: "/",
+    //             secure : true,
+    //             maxAge: 30 * 24 * 60 * 60, 
+    //         }
+    //     }
+    // },
     callbacks : {
         async session({session}){
             const sessionUser = await User.findOne({email: session.user.email});

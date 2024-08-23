@@ -31,7 +31,7 @@ export const POST = async (request) => {
    
     // Streak calculation logic
     const today = new Date();
-    const yesterday = new Date(today);
+    const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
 
 
@@ -44,6 +44,7 @@ export const POST = async (request) => {
      }
  
     
+     
     if (user) {
       console.log("Last Activity Date:", user.lastActivityDate?.toDateString());
   console.log("Yesterday:", yesterday.toDateString());
@@ -53,16 +54,16 @@ export const POST = async (request) => {
           // Increment the streak by 1
           user.streak += 1;
           console.log("Streak has been updated", user)
-        } else if (user.lastActivityDate?.toDateString() !== today.toDateString()) {
-          // Reset the streak to 1
+        } else{
           user.streak = 1; 
-          console.log("streak has been defaulted", user)
+        console.log("streak has been defaulted", user)
         }
       } else {
         // If the user doesn't exist, create a new user with default name
         return new Response("Users not found", {status: 404});
       }
 
+      user.lastActivityDate = today;
       await user.save();
       
       // Create a new quiet time entry

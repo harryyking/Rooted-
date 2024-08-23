@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useToast } from "./ToastProvider";
 import { useSession } from 'next-auth/react';
 
+
 const Card = () => {
   const{data: session} = useSession();
  
@@ -95,6 +96,7 @@ const Card = () => {
       </button>
     </form>
 
+    
     </>
     
   );
