@@ -28,7 +28,7 @@ const Board = () => {
       <tr>
         <th></th>
         <th>Name</th>
-        <th>Email</th>
+        
         <th>Streak</th>
       </tr>
     </thead>
@@ -38,7 +38,6 @@ const Board = () => {
         <tr className="hover" key={user.email}>
         <th>{index +1 }</th>
         <td>{user.name}</td>
-        <td> {user.email}</td>
         <td className="text-primary font-medium">{user.streak}</td>
       </tr>
 

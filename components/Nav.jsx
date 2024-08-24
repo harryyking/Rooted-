@@ -49,7 +49,7 @@ const Nav = () => {
                <button className="btn btn-primary">Quiet Time</button>
                </Link>
                <Link href="/record/testimony">
-                <button className='btn btn-secondary'>Testimony</button>
+                <button className='btn btn-secondary'>Testify</button>
                 </Link>
                </div>
               

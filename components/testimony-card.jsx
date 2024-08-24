@@ -60,14 +60,14 @@ const TestimonyCard = () => {
         {errors.title && <p className="text-secondary text-xs">Title is required</p>}
       </div>
       <div>
-        <label htmlFor="body" className="label">What happened?</label>
+        <label htmlFor="body" className="label">Narrate</label>
         
         <textarea
           {...register("body", { required: true })}
           className="textarea textarea-bordered w-full "
           type="text"
         />
-        {errors.body && <p className="text-secondary text-xs">What happened? is required</p>}
+        {errors.body && <p className="text-secondary text-xs">Narrate is required</p>}
       </div>
       
       <button
@@ -75,7 +75,7 @@ const TestimonyCard = () => {
         disabled={submit}
         className="btn btn-secondary w-full mt-4 "
       >
-        Submit
+        Share
       </button>
     </form>
   )
